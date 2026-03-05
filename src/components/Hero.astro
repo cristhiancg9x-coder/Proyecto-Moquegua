@@ -1,0 +1,168 @@
+---
+// src/components/Hero.astro
+---
+
+<script>
+  import { tsParticles } from "@tsparticles/engine";
+  import { loadSlim } from "@tsparticles/slim";
+  import { loadTextShape } from "@tsparticles/shape-text";
+
+  // Ejecutado en el cliente una vez cargado
+  const initParticles = async () => {
+    await loadSlim(tsParticles);
+    await loadTextShape(tsParticles);
+
+    await tsParticles.load({
+      id: "tsparticles",
+      options: {
+        fullScreen: { enable: false }, // Evita que cubra toda la página afectando elementos inferiores
+        fpsLimit: 60,
+        particles: {
+          number: {
+            value: 60,
+            density: {
+              enable: true,
+              width: 800,
+            },
+          },
+          color: {
+            value: ["#00ffff", "#ff00ff", "#8a2be2"], // Cian, Magenta, Violeta
+          },
+          shape: {
+            type: ["circle", "char"], // Mezclamos círculos de luz y caracteres de texto
+            options: {
+              char: [
+                {
+                  value: ["🎵", "🎶", "♩", "♬"], // Notas musicales por defecto del S.O.
+                  font: "Verdana", // Fuente segura estándar
+                  style: "",
+                  weight: "400",
+                  fill: true,
+                  particles: {
+                    size: {
+                      value: 13, // Notas musicales fijadas a tamaño 13
+                    },
+                  },
+                },
+              ],
+            },
+          },
+          opacity: {
+            value: { min: 0.1, max: 0.5 },
+          },
+          size: {
+            value: { min: 2, max: 6 },
+          },
+          move: {
+            enable: true,
+            direction: "top", // Movimiento hacia arriba como polvo estelar/burbujas
+            speed: 1.5,
+            random: false,
+            straight: false,
+            outModes: {
+              default: "out",
+            },
+          },
+        },
+        interactivity: {
+          detectsOn: "window",
+          events: {
+            onHover: {
+              enable: true,
+              mode: "bubble", // Interacción suave al pasar el ratón
+            },
+          },
+          modes: {
+            bubble: {
+              distance: 200,
+              size: 6,
+              duration: 2,
+              opacity: 0.8,
+            },
+            repulse: {
+              distance: 100,
+              duration: 0.4,
+            },
+          },
+        },
+        detectRetina: true,
+      },
+    });
+  };
+
+  // Disparar cuando Astro haya hidratado/preparado el DOM
+  document.addEventListener("DOMContentLoaded", initParticles);
+</script>
+
+<!-- Contenedor Principal: bg-gray-950, overflow-hidden -->
+<section
+  class="relative bg-gray-950 text-white overflow-hidden min-h-screen sm:min-h-[80vh] flex items-center py-16"
+>
+  <!-- Capa 1: Fondo de Partículas (z-0) -->
+  <div id="tsparticles" class="absolute inset-0 w-full h-full z-0"></div>
+
+  <!-- Capa 2: Overlay oscuro para garantizar accesibilidad/contraste (z-10) -->
+  <div class="absolute inset-0 bg-black/40 z-10 pointer-events-none"></div>
+
+  <!-- Capa 3: Contenido SEO y CTA (z-20) centrado -->
+  <div
+    class="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center"
+  >
+    <div class="max-w-3xl flex flex-col items-center">
+      <span
+        class="inline-block py-1 px-3 rounded-full bg-blue-600/30 text-blue-300 text-sm font-semibold tracking-wider mb-4 border border-blue-500/30 backdrop-blur-sm"
+      >
+        AlquilerSonidoAxel
+      </span>
+
+      <!-- Texto H1 Solicitado (Optimizado SEO) -->
+      <h1
+        class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-white"
+      >
+        <span class="block">Alquiler de Equipos de</span>
+        <span
+          class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
+        >
+          Sonido y Luces en Moquegua
+        </span>
+      </h1>
+
+      <p
+        class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed"
+      >
+        <strong>Montaje impecable</strong> y equipos de alta gama para <strong
+          >Bodas, Fiestas y Eventos Corporativos</strong
+        >. Nos encargamos de la técnica para que tú disfrutes del evento.
+      </p>
+
+      <div
+        class="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto"
+      >
+        <a
+          href="#paquetes"
+          class="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-base font-bold rounded-lg text-white bg-blue-600 hover:bg-blue-700 md:text-lg transition-transform hover:-translate-y-1 shadow-lg hover:shadow-blue-500/50"
+        >
+          Ver Paquetes
+          <svg
+            class="ml-2 -mr-1 w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </a>
+        <a
+          href="/contacto"
+          class="inline-flex justify-center items-center px-8 py-3.5 border border-gray-300 text-base font-bold rounded-lg text-white hover:bg-white hover:text-gray-900 md:text-lg transition-colors backdrop-blur-sm bg-white/10"
+        >
+          Cotizar Rápido
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

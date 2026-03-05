@@ -1,0 +1,240 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+// URL base de WhatsApp para agilizar reservas
+const waBase = "https://wa.me/51951413458?text=";
+
+// Datos ampliados del catálogo basados en la investigación de mercado local
+import { equipos } from "../../data/equipos.js";
+/* const equipos = [
+  {
+    id: 1,
+    nombre: "Sistemas de Parlantes (Activos/Pasivos)",
+    categoria: "parlantes",
+    descripcion:
+      "Sonido principal potente y de alta fidelidad para música estruendosa o claridad en voces.",
+    imagen:
+      "https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=400&auto=format&fit=crop",
+  },
+  {
+    id: 2,
+    nombre: "Subwoofers (Bajos)",
+    categoria: "parlantes",
+    descripcion:
+      "El golpe de pecho profundo, completamente esencial para fiestas, bodas y DJs.",
+    imagen:
+      "https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=400&auto=format&fit=crop",
+  },
+  {
+    id: 3,
+    nombre: "Consolas Mezcladoras de Audio",
+    categoria: "consolas",
+    descripcion:
+      "El cerebro del sonido, donde se conectan bandas, instrumentos, DJs y micrófonos.",
+    imagen:
+      "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=400&auto=format&fit=crop",
+  },
+  {
+    id: 4,
+    nombre: "Micrófonos Inalámbricos Profesionales",
+    categoria: "microfonos",
+    descripcion:
+      "Libertad de movimiento total para cantantes, animadores o presentadores sin cortes de señal.",
+    imagen:
+      "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=400&auto=format&fit=crop",
+  },
+  {
+    id: 5,
+    nombre: "Micrófonos Alámbricos (Con Cable)",
+    categoria: "microfonos",
+    descripcion:
+      "Solución clásica e infalible, ideales para músicos, bateristas y coristas de orquesta.",
+    imagen:
+      "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=400&auto=format&fit=crop",
+  },
+  {
+    id: 6,
+    nombre: "Amplificadores de Potencia (Powers)",
+    categoria: "parlantes",
+    descripcion:
+      "La fuerza bruta necesaria para dar potencia a sistemas pasivos en grandes explanadas.",
+    imagen:
+      "https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=400&auto=format&fit=crop",
+  },
+  {
+    id: 7,
+    nombre: "Set de Luces LED Rítmicas",
+    categoria: "luces",
+    descripcion:
+      "Iluminación colorida para la pista de baile que reacciona de forma inteligente a la música.",
+    imagen:
+      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop",
+  },
+  {
+    id: 8,
+    nombre: "Cabezas Móviles (Luces Robóticas)",
+    categoria: "luces",
+    descripcion:
+      "Efectos visuales dinámicos de haz concentrado nivel 'concierto' para sorprender a tus invitados.",
+    imagen:
+      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop",
+  },
+  {
+    id: 9,
+    nombre: "Máquinas de Humo y Efectos Especiales",
+    categoria: "luces",
+    descripcion:
+      "Para resaltar los rayos láser y darle cuerpo y atmósfera a la iluminación general.",
+    imagen:
+      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop",
+  },
+  {
+    id: 10,
+    nombre: "Estructuras Metálicas (Truss)",
+    categoria: "estructuras",
+    descripcion:
+      "Armazones seguros y modulares para colgar de forma segura luces y elevar parlantes aéreos.",
+    imagen:
+      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop",
+  },
+  {
+    id: 11,
+    nombre: "Retornos / Monitores de Escenario",
+    categoria: "parlantes",
+    descripcion:
+      "Parlantes en forma de cuña para que los músicos y cantantes se escuchen a sí mismos nítidamente.",
+    imagen:
+      "https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=400&auto=format&fit=crop",
+  },
+  {
+    id: 12,
+    nombre: "Pedestales y Accesorios",
+    categoria: "accesorios",
+    descripcion:
+      "Soportes metálicos y trípodes firmes para una instalación segura de luces y parlantes perimetrales.",
+    imagen:
+      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop",
+  },
+]; */
+---
+
+<Layout title="Catálogo de Equipos | AlquilerSonidoAxel">
+  <!-- Cabecera de Página -->
+  <div class="bg-gray-900 py-16 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl font-extrabold text-white sm:text-4xl">
+        Catálogo de Equipos
+      </h1>
+      <p class="mt-4 text-xl text-gray-300">
+        Encuentra exactamente lo que necesitas para tu evento.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col md:flex-row gap-8">
+      <!-- Barra lateral de Filtros -->
+      <aside class="w-full md:w-64 shrink-0">
+        <div
+          class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 sticky top-24"
+        >
+          <h2 class="text-lg font-semibold text-gray-900 mb-4">Categorías</h2>
+          <!-- Nota: En SSG puro como Astro, para filtros visuales usamos enlaces que recargan la página con parámetros o pequeño script vanilla JS -->
+          <ul class="space-y-3">
+            <li>
+              <a
+                href="/equipos"
+                class="flex items-center text-blue-600 font-medium"
+                ><span class="w-2 h-2 rounded-full bg-blue-600 mr-2"
+                ></span>Todos</a
+              >
+            </li>
+            <li>
+              <a
+                href="/equipos?categoria=parlantes"
+                class="text-gray-600 hover:text-blue-600 transition-colors"
+                >Parlantes y Subwoofers</a
+              >
+            </li>
+            <li>
+              <a
+                href="/equipos?categoria=luces"
+                class="text-gray-600 hover:text-blue-600 transition-colors"
+                >Luces Inteligentes</a
+              >
+            </li>
+            <li>
+              <a
+                href="/equipos?categoria=consolas"
+                class="text-gray-600 hover:text-blue-600 transition-colors"
+                >Consolas y Mixers</a
+              >
+            </li>
+            <li>
+              <a
+                href="/equipos?categoria=microfonos"
+                class="text-gray-600 hover:text-blue-600 transition-colors"
+                >Microfonía</a
+              >
+            </li>
+            <li>
+              <a
+                href="/equipos?categoria=estructuras"
+                class="text-gray-600 hover:text-blue-600 transition-colors"
+                >Estructuras Truss</a
+              >
+            </li>
+            <li>
+              <a
+                href="/equipos?categoria=accesorios"
+                class="text-gray-600 hover:text-blue-600 transition-colors"
+                >Accesorios Extras</a
+              >
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Grid de Productos -->
+      <main class="flex-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            equipos.map((equipo) => (
+              <article class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow border border-gray-100 overflow-hidden flex flex-col group">
+                <div class="aspect-w-1 aspect-h-1 w-full bg-gray-200 relative overflow-hidden">
+                  <Image
+                    src={equipo.imagen}
+                    alt={equipo.nombre}
+                    class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-semibold text-gray-700 uppercase">
+                    {equipo.categoria}
+                  </div>
+                </div>
+                <div class="p-5 flex-1 flex flex-col">
+                  <h3 class="text-lg font-bold text-gray-900 mb-1">
+                    {equipo.nombre}
+                  </h3>
+                  <p class="text-sm text-gray-500 mb-4 flex-1">
+                    {equipo.descripcion}
+                  </p>
+                  <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <a
+                      href={`${waBase}Hola,%20deseo%20cotizar%20el%20alquiler%20de%20:%20${encodeURIComponent(equipo.nombre)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="w-full text-center font-bold text-blue-700 bg-blue-50 hover:bg-blue-600 hover:text-white px-4 py-2.5 rounded-lg transition-colors border border-blue-200 hover:border-blue-600"
+                    >
+                      Cotizar en WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </main>
+    </div>
+  </div>
+</Layout>

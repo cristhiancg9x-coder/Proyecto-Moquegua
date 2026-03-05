@@ -1,0 +1,342 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+// getStaticPaths es requerido para SSG dinámico en Astro
+export async function getStaticPaths() {
+  const { equipos } = await import("../../data/equipos.js");
+  /* const equipos = [
+    {
+      slug: "jbl-eon715",
+      id: 1,
+      nombre: "JBL EON715",
+      categoria: "parlantes",
+      descripcionLarga:
+        "El JBL EON715 es un altavoz activo de 15 pulgadas y 1300W con conectividad Bluetooth, EQ de 8 bandas por la app JBL Pro Connect y DSP integrado.",
+      imagen:
+        "https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=800&auto=format&fit=crop",
+      especificaciones: [
+        { label: "Potencia", value: "1300W Peak / 650W RMS" },
+        { label: "Respuesta de Frecuencias", value: "45 Hz - 20 kHz (-10 dB)" },
+        { label: "Max SPL", value: "128 dB" },
+        { label: "Conectividad", value: "Bluetooth 5.0, 2x Combo XLR/TRS" },
+      ],
+    },
+    {
+      slug: "qsc-k12-2",
+      id: 2,
+      nombre: "QSC K12.2",
+      categoria: "parlantes",
+      descripcionLarga:
+        "El QSC K12.2 es el estándar de la industria. 2000W de potencia limpia clase D, excelente dispersión y un DSP avanzado con presets.",
+      imagen:
+        "https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=800&auto=format&fit=crop",
+      especificaciones: [
+        { label: "Potencia", value: "2000W Peak (1800W LF + 225W HF)" },
+        { label: "Cobertura", value: "75° Axisymetric" },
+        { label: "Max SPL", value: "132 dB" },
+        { label: "DSP", value: "Intrinsic Correction y presets guardables" },
+      ],
+    },
+    {
+      slug: "subwoofer-jbl-prx818",
+      id: 3,
+      nombre: "Subwoofer JBL PRX818XLFW",
+      categoria: "parlantes",
+      descripcionLarga:
+        "Subwoofer activo 18 pulgadas 1500W con conectividad Wi-Fi integrada para control y DSP avanzado, ideal para bajos profundos.",
+      imagen:
+        "https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=800&auto=format&fit=crop",
+      especificaciones: [
+        { label: "Potencia", value: "1500W Peak" },
+        { label: "Rango de Frecuencias", value: "30 Hz - 103 Hz" },
+        { label: "Max SPL", value: "134 dB" },
+      ],
+    },
+    {
+      slug: "sistema-line-array",
+      id: 4,
+      nombre: "Sistema Line Array Compacto",
+      categoria: "parlantes",
+      descripcionLarga:
+        "Sistema de arreglo lineal modular para excelente dispersión en eventos masivos o al aire libre.",
+      imagen:
+        "https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=800&auto=format&fit=crop",
+      especificaciones: [
+        { label: "Aplicación", value: "Conciertos y Festivales" },
+        { label: "Cobertura", value: "Largo alcance" },
+      ],
+    },
+    {
+      slug: "soundcraft-ui16",
+      id: 5,
+      nombre: "Soundcraft Ui16",
+      categoria: "consolas",
+      descripcionLarga:
+        "Mezclador digital de 16 canales controlable desde cualquier dispositivo a través de Wi-Fi. Incorpora procesamiento dbx, DigiTech y Lexicon.",
+      imagen:
+        "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=800&auto=format&fit=crop",
+      especificaciones: [
+        { label: "Canales", value: "16 Entradas" },
+        { label: "Control", value: "Wi-Fi Integrado (Multi-plataforma)" },
+        { label: "Efectos", value: "Lexicon Reverb, dbx compresión" },
+      ],
+    },
+    {
+      slug: "behringer-x32-producer",
+      id: 6,
+      nombre: "Behringer X32 Producer",
+      categoria: "consolas",
+      descripcionLarga:
+        "Consola digital de 40 entradas, 25 buses para estudio y aplicaciones en vivo.",
+      imagen:
+        "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=800&auto=format&fit=crop",
+      especificaciones: [
+        { label: "Canales", value: "40 Entradas, 16 Preamps Midas" },
+        { label: "Faders", value: "17 Faders motorizados 100mm" },
+        { label: "Efectos", value: "8 slots estéreo" },
+      ],
+    },
+    {
+      slug: "cabeza-movil-beam-230w",
+      id: 7,
+      nombre: "Cabeza Móvil Beam 230W 7R",
+      categoria: "luces",
+      descripcionLarga:
+        "Luz de haz concentrado Beam 7R súper brillante para conciertos y escenarios.",
+      imagen:
+        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop",
+      especificaciones: [
+        { label: "Lámpara", value: "Osram 230W 7R" },
+        { label: "Efectos", value: "Colores, Gobos, Prisma 8 caras" },
+        { label: "DMX", value: "16 Canales DMX512" },
+      ],
+    },
+    {
+      slug: "par-led-rgbw",
+      id: 8,
+      nombre: "Par LED RGBW 54x3W",
+      categoria: "luces",
+      descripcionLarga:
+        "Spot LED ultrabrillante para lavado de color y decoración perimetral.",
+      imagen:
+        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop",
+      especificaciones: [
+        { label: "LEDs", value: "54 x 3W RGBW" },
+        { label: "Control", value: "Automático, Audiorítmico, DMX" },
+      ],
+    },
+    {
+      slug: "maquina-humo-1500w",
+      id: 9,
+      nombre: "Máquina de Humo DMX 1500W",
+      categoria: "luces",
+      descripcionLarga:
+        "Generador de niebla indispensable para resaltar los lásers y luces.",
+      imagen:
+        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop",
+      especificaciones: [
+        { label: "Potencia", value: "1500W" },
+        { label: "Alcance", value: "Hasta 8 metros" },
+        { label: "Control", value: "Inalámbrico y DMX" },
+      ],
+    },
+    {
+      slug: "microfono-inalambrico-uhf",
+      id: 10,
+      nombre: "Sistema Inalámbrico UHF Doble",
+      categoria: "microfonos",
+      descripcionLarga:
+        "Sistema de micrófonos duales diseñados para voces, totalmente libres de interferencias.",
+      imagen:
+        "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      especificaciones: [
+        { label: "Frecuencia", value: "UHF (Banda Ultra Alta)" },
+        { label: "Alcance", value: "Hasta 100 metros línea de visión" },
+      ],
+    },
+    {
+      slug: "kit-mic-bateria",
+      id: 11,
+      nombre: "Set de Micrófonos P/Batería",
+      categoria: "microfonos",
+      descripcionLarga:
+        "Kit de microfonía dinámicos y condensadores para grabación o sonido en vivo de tambores.",
+      imagen:
+        "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      especificaciones: [
+        { label: "Piezas", value: "7 (Bombo, Caja, Toms, Overheads)" },
+      ],
+    },
+    {
+      slug: "estructura-truss-elevador",
+      id: 12,
+      nombre: "Estructura Truss Elevador T",
+      categoria: "estructuras",
+      descripcionLarga:
+        "Soporte de elevación de aluminio resistente para luces o parlantes.",
+      imagen:
+        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop",
+      especificaciones: [
+        { label: "Material", value: "Aleación de Aluminio" },
+        { label: "Altura Max", value: "Hasta 3.5m / 4m" },
+      ],
+    },
+  ]; */
+
+  return equipos.map((equipo) => ({
+    params: { slug: equipo.slug },
+    props: { equipo },
+  }));
+}
+
+const { equipo } = Astro.props;
+const waNumber = "51951413458"; // Número oficial
+
+// Schema.org: Product
+const productSchema = {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  name: equipo.nombre,
+  image: [equipo.imagen],
+  description: equipo.descripcionLarga,
+  brand: {
+    "@type": "Brand",
+    name: equipo.nombre.split(" ")[0], // Extrae ej: "JBL" o "QSC"
+  },
+};
+---
+
+<Layout title={`${equipo.nombre} | Alquiler en AlquilerSonidoAxel`}>
+  <!-- Inyección del Schema -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(productSchema)}
+    slot="head"
+  />
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-16">
+    <!-- Breadcrumbs -->
+    <nav class="flex text-gray-500 text-sm mb-8" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a href="/" class="hover:text-blue-600">Inicio</a>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <svg
+              class="w-4 h-4 text-gray-400 mx-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"></path></svg
+            >
+            <a href="/equipos" class="hover:text-blue-600">Equipos</a>
+          </div>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <svg
+              class="w-4 h-4 text-gray-400 mx-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"></path></svg
+            >
+            <span class="text-gray-900 font-medium" aria-current="page"
+              >{equipo.nombre}</span
+            >
+          </div>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Detalles del Producto -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <!-- Imagen -->
+      <div
+        class="aspect-w-1 aspect-h-1 w-full bg-gray-100 rounded-2xl overflow-hidden border border-gray-200"
+      >
+        <Image
+          src={equipo.imagen}
+          alt={equipo.nombre}
+          class="w-full h-full object-cover object-center"
+        />
+      </div>
+
+      <!-- Info -->
+      <div class="flex flex-col">
+        <span
+          class="text-xs font-bold tracking-widest text-blue-600 uppercase mb-2"
+          >{equipo.categoria}</span
+        >
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-4">
+          {equipo.nombre}
+        </h1>
+
+        <div class="mb-6">
+          <a
+            href={`https://wa.me/${waNumber}?text=Hola,%20deseo%20cotizar%20el%20alquiler%20de:%20${encodeURIComponent(equipo.nombre)}`}
+            target="_blank"
+            class="inline-flex items-center text-3xl font-extrabold text-blue-600 hover:text-blue-800 transition-colors"
+          >
+            Cotizar por WhatsApp
+            <svg
+              class="w-6 h-6 ml-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+            >
+          </a>
+        </div>
+
+        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+          {equipo.descripcionLarga}
+        </p>
+
+        <!-- Especificaciones -->
+        <h3
+          class="text-xl font-bold text-gray-900 mb-4 border-b border-gray-200 pb-2"
+        >
+          Especificaciones Técnicas
+        </h3>
+        <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-4 mb-10">
+          {
+            equipo.especificaciones.map((spec) => (
+              <div class="border-t border-gray-100 pt-3">
+                <dt class="text-sm font-medium text-gray-500">{spec.label}</dt>
+                <dd class="mt-1 text-sm text-gray-900 font-semibold">
+                  {spec.value}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+
+        <!-- CTA Action -->
+        <div class="mt-auto pt-8 flex border-t border-gray-200">
+          <a
+            href={`https://wa.me/${waNumber}?text=Hola,%20busco%20alquilar%20el%20equipo:%20${encodeURIComponent(equipo.nombre)}`}
+            target="_blank"
+            class="w-full flex justify-center items-center py-4 px-8 rounded-md shadow-sm text-lg font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+          >
+            Preguntar Disponibilidad por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

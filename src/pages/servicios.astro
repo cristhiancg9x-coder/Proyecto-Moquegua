@@ -1,0 +1,263 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import imgInstalacion from "../assets/InstalaciónyMontajeProfesional.png";
+import imgOperadores from "../assets/OperadoresenVivo.png";
+---
+
+<Layout title="Servicios de Instalación e Ingeniería | AlquilerSonidoAxel">
+  <!-- Cabecera de Página -->
+  <div class="bg-gray-900 py-16 mt-16 relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-blue-900/40 to-transparent z-10"
+    >
+    </div>
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-20"
+    >
+      <h1 class="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
+        Más allá del Alquiler
+      </h1>
+      <p class="mt-4 text-xl text-gray-300 max-w-2xl mx-auto">
+        Ofrecemos soluciones integrales: desde el transporte seguro hasta la
+        ingeniería de audio para que no te preocupes de nada.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <!-- Servicio 1: Instalación y Montaje -->
+      <div class="order-2 md:order-1">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">
+          Instalación y Montaje Profesional
+        </h2>
+        <p class="text-lg text-gray-600 mb-6">
+          Nuestro equipo técnico especializado se encarga de todo el proceso de
+          montaje antes de que llegue el primer invitado.
+        </p>
+        <ul class="space-y-4 text-gray-700">
+          <li class="flex items-start">
+            <svg
+              class="h-6 w-6 text-green-500 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"></path></svg
+            >
+            <span class="ml-3"
+              >Armado de estructuras Truss seguras y certificadas.</span
+            >
+          </li>
+          <li class="flex items-start">
+            <svg
+              class="h-6 w-6 text-green-500 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"></path></svg
+            >
+            <span class="ml-3"
+              >Cableado estructurado y disimulado (cinta gafa, pasacables) para
+              evitar accidentes y mantener la estética.</span
+            >
+          </li>
+          <li class="flex items-start">
+            <svg
+              class="h-6 w-6 text-green-500 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"></path></svg
+            >
+            <span class="ml-3"
+              >Calibración acústica del recinto para prevenir feedback
+              ('acoples') y puntos ciegos de sonido.</span
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="order-1 md:order-2">
+        <Image
+          src={imgInstalacion}
+          alt="Ingeniero calibrando consola de sonido"
+          class="w-full rounded-2xl shadow-xl border border-gray-100 object-cover aspect-video"
+        />
+      </div>
+    </div>
+
+    <!-- Separador -->
+    <hr class="my-20 border-gray-200" />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <!-- Servicio 2: Operador/Sonidista -->
+      <div>
+        <Image
+          src={imgOperadores}
+          alt="DJ y Operador de Sonido en vivo"
+          class="w-full rounded-2xl shadow-xl border border-gray-100 object-cover aspect-video"
+        />
+      </div>
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">
+          Operadores en Vivo (Sonidista & Lighjockey)
+        </h2>
+        <p class="text-lg text-gray-600 mb-6">
+          No dejes la calidad de tu evento al azar. Contrata a nuestros
+          profesionales para operar los equipos en tiempo real durante todo el
+          evento.
+        </p>
+        <ul class="space-y-4 text-gray-700">
+          <li class="flex items-start">
+            <svg
+              class="h-6 w-6 text-green-500 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"></path></svg
+            >
+            <span class="ml-3"
+              ><strong>Ingeniero de Sonido (FOH):</strong> Mezcla de bandas en vivo,
+              control de micrófonos durante ceremonias corporativas o bodas.</span
+            >
+          </li>
+          <li class="flex items-start">
+            <svg
+              class="h-6 w-6 text-green-500 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"></path></svg
+            >
+            <span class="ml-3"
+              ><strong>Iluminador (LJ):</strong> Secuencias de luces programadas por
+              DMX sincronizadas con momentos clave (baile de novios, premios).</span
+            >
+          </li>
+        </ul>
+        <div class="mt-8">
+          <a
+            href="/contacto"
+            class="text-blue-600 font-semibold hover:text-blue-800 flex items-center"
+            >Consultar tarifas por hora/evento <svg
+              class="w-4 h-4 ml-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+            ></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Separador -->
+    <hr class="my-20 border-gray-200" />
+
+    <!-- Servicio 3: Transporte -->
+    <div class="text-center max-w-3xl mx-auto">
+      <span
+        class="inline-flex items-center justify-center p-3 bg-blue-100 rounded-full mb-4"
+      >
+        <svg
+          class="w-8 h-8 text-blue-600"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg
+        >
+      </span>
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">
+        Transporte Logístico Seguro
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        El delicado equipo de audio debe transportarse con cuidado. Contamos con
+        furgones propios para llevar los Rack Cases de manera segura a cualquier
+        punto de la región Moquegua (Ilo, Mariscal Nieto, Sánchez Cerro).
+      </p>
+
+      <div
+        class="bg-gray-50 rounded-2xl p-8 border border-gray-200 shadow-inner"
+      >
+        <h3 class="text-xl font-bold text-gray-900 mb-4">
+          Zonas de Cobertura Principal
+        </h3>
+        <div class="flex flex-wrap justify-center gap-4">
+          <span
+            class="px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 border border-gray-300 shadow-sm"
+            >Moquegua Ciudad</span
+          >
+          <span
+            class="px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 border border-gray-300 shadow-sm"
+            >Puerto de Ilo</span
+          >
+          <span
+            class="px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 border border-gray-300 shadow-sm"
+            >Samegua</span
+          >
+          <span
+            class="px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 border border-gray-300 shadow-sm"
+            >Torata</span
+          >
+          <span
+            class="px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 border border-gray-300 shadow-sm"
+            >Cuajone</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Banner -->
+  <div class="bg-blue-600">
+    <div
+      class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between"
+    >
+      <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+        <span class="block">¿Listo para un evento sin estrés?</span>
+        <span class="block text-blue-200 text-xl mt-2 font-normal"
+          >Déjanos la parte técnica a nosotros.</span
+        >
+      </h2>
+      <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+        <div class="inline-flex rounded-md shadow">
+          <a
+            href="/contacto"
+            class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50 transition-colors"
+          >
+            Contactar Asesor
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

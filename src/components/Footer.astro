@@ -1,0 +1,105 @@
+---
+// Footer.astro
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-gray-900 border-t border-gray-800 text-gray-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Brand & About -->
+      <div class="col-span-1 md:col-span-2">
+        <a
+          href="/"
+          class="flex items-center text-2xl font-bold tracking-tight text-white mb-4 group block"
+        >
+          <img
+            src="/favicon.svg"
+            alt="Logo AlquilerSonidoAxel"
+            class="w-8 h-8 mr-2 group-hover:scale-110 transition-transform duration-300"
+          />
+          <span>Alquiler<span class="text-blue-500">SonidoAxel</span></span>
+        </a>
+        <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+          Expertos en alquiler de sonido profesional, iluminación inteligente y
+          estructuras para bodas, eventos corporativos y fiestas en toda la
+          región de Moquegua.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3
+          class="text-sm font-semibold text-white tracking-wider uppercase mb-4"
+        >
+          Enlaces
+        </h3>
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="/"
+              class="text-sm text-gray-400 hover:text-white transition-colors"
+              >Inicio</a
+            >
+          </li>
+          <li>
+            <a
+              href="/equipos"
+              class="text-sm text-gray-400 hover:text-white transition-colors"
+              >Equipos</a
+            >
+          </li>
+          <li>
+            <a
+              href="/servicios"
+              class="text-sm text-gray-400 hover:text-white transition-colors"
+              >Instalación y Servicios</a
+            >
+          </li>
+          <li>
+            <a
+              href="/contacto"
+              class="text-sm text-gray-400 hover:text-white transition-colors"
+              >Contacto</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info (NAP Visual) -->
+      <div>
+        <h3
+          class="text-sm font-semibold text-white tracking-wider uppercase mb-4"
+        >
+          Contacto
+        </h3>
+        <address class="not-italic text-sm text-gray-400 space-y-2">
+          <p>📍 Moquegua, Perú</p>
+          <p>
+            📞 <a
+              href="tel:+51951413458"
+              class="hover:text-white transition-colors">+51 951 413 458</a
+            >
+          </p>
+          <p>
+            ✉️ <a
+              href="mailto:equipossonidoalquile@gmail.com"
+              class="hover:text-white transition-colors"
+              >equipossonidoalquile@gmail.com</a
+            >
+          </p>
+        </address>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
+    >
+      <p class="text-xs text-gray-500">
+        &copy; {currentYear} AlquilerSonidoAxel. Todos los derechos reservados.
+      </p>
+      <div class="mt-4 md:mt-0">
+        <!-- Social links placeholder -->
+      </div>
+    </div>
+  </div>
+</footer>
