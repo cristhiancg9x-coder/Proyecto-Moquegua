@@ -12,6 +12,8 @@ import imgHumo from "../assets/AlquilerMáquinasdeHumoyEfectos.jpg";
 import imgTruss from "../assets/AlquilerEstructurasMetálicasTruss.jpg";
 import imgRetornos from "../assets/AlquilerRetornosMonitores de Escenario.jpg";
 import imgPedestales from "../assets/AlquilerPedestalesyAccesorios.png";
+import imgReflectores from "../assets/ReflectoresLED.png";
+import imgGeneradores from "../assets/GeneradorElectrico.png";
 
 export const equipos = [
   {
@@ -169,6 +171,32 @@ export const equipos = [
     especificaciones: [
       { label: "Disponibilidad", value: "Se incluyen por obligación con el kit cotizado u optimizados a petición extra" },
       { label: "Ergonomía", value: "Regulables según estaturas y antideslizantes para suelos resbalosos" },
+    ],
+  },
+  {
+    id: 13,
+    slug: "reflectores-led-potencia",
+    nombre: "Reflectores LED de Alta Potencia",
+    categoria: "luces",
+    descripcion: "Iluminación arquitectónica y perimetral de inmensa potencia luminosa para estadios, fachadas y toldos masivos.",
+    descripcionLarga: "Proyectores de luz tipo reflector (bañadores) pensados para campos abiertos y estructuras inmensas. Desplegan un haz súper amplio garantizando máxima visibilidad en plena oscuridad de la noche.",
+    imagen: imgReflectores,
+    especificaciones: [
+      { label: "Potencia Nominal", value: "Opciones desde 300W, 400W hasta 1000W LED" },
+      { label: "Protección Climática", value: "Exterior Nivel IP65 (Soporta lluvia y polvo intenso)" },
+    ],
+  },
+  {
+    id: 14,
+    slug: "generadores-electricos",
+    nombre: "Generadores Eléctricos",
+    categoria: "infraestructura",
+    descripcion: "Plantas de energía portátiles industriales para respaldar audio e iluminación en locaciones sin suministro.",
+    descripcionLarga: "Indispensables para bodas al aire libre, conciertos campestres o prevención ante cortes municipales. Brindan de forma insonorizada toda la electricidad requerida por racks de potencias gigantes.",
+    imagen: imgGeneradores,
+    especificaciones: [
+      { label: "Combustible y Duración", value: "Diésel o Gasolina optimizado para horas de uso ininterrumpido" },
+      { label: "Control de Flujo", value: "Tecnología AVR (Salida estable para no quemar equipos sensibles)" },
     ],
   }
 ];
