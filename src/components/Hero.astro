@@ -1,5 +1,7 @@
 ---
 // src/components/Hero.astro
+import { Image } from "astro:assets";
+import heroBg from "../assets/StageProduction.png";
 ---
 
 <script>
@@ -96,23 +98,35 @@
 
 <!-- Contenedor Principal: bg-gray-950, overflow-hidden -->
 <section
-  class="relative bg-gray-950 text-white overflow-hidden min-h-screen sm:min-h-[80vh] flex items-center py-16"
+  class="relative bg-black text-white overflow-hidden min-h-screen sm:min-h-[80vh] flex items-center py-16"
 >
-  <!-- Capa 1: Fondo de Partículas (z-0) -->
-  <div id="tsparticles" class="absolute inset-0 w-full h-full z-0"></div>
+  <!-- Capa 1: Imagen de Fondo Principal (Optimizado Astro) -->
+  <div class="absolute inset-0 z-0">
+    <Image
+      src={heroBg}
+      alt="Escenario espectacular con luces y sonido de A & KATHERINE PRODUCCIONES"
+      class="w-full h-full object-cover opacity-60"
+      widths={[640, 1024, 1920]}
+      sizes="100vw"
+      priority
+    />
+  </div>
 
-  <!-- Capa 2: Overlay oscuro para garantizar accesibilidad/contraste (z-10) -->
-  <div class="absolute inset-0 bg-black/40 z-10 pointer-events-none"></div>
+  <!-- Capa 1: Fondo de Partículas (z-10) -->
+  <div id="tsparticles" class="absolute inset-0 w-full h-full z-10"></div>
 
-  <!-- Capa 3: Contenido SEO y CTA (z-20) centrado -->
+  <!-- Capa 2: Overlay oscuro para garantizar accesibilidad/contraste (z-20) -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80 z-20 pointer-events-none"></div>
+
+  <!-- Capa 3: Contenido SEO y CTA (z-30) centrado -->
   <div
-    class="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center"
+    class="relative z-30 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center"
   >
     <div class="max-w-3xl flex flex-col items-center">
       <span
         class="inline-block py-1 px-3 rounded-full bg-blue-600/30 text-blue-300 text-sm font-semibold tracking-wider mb-4 border border-blue-500/30 backdrop-blur-sm"
       >
-        AlquilerSonidoAxel
+        A & KATHERINE PRODUCCIONES
       </span>
 
       <!-- Texto H1 Solicitado (Optimizado SEO) -->
@@ -130,9 +144,9 @@
       <p
         class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed"
       >
-        <strong>Montaje impecable</strong>, equipos de alta gama <strong>y energía propia</strong> para <strong
+        <strong>Producción integral</strong>, equipos de alta gama <strong>y energía propia</strong> para <strong
           >Bodas, Fiestas y Eventos Corporativos</strong
-        >. Nos encargamos de la técnica para que tú disfrutes del evento.
+        >. Elevamos la técnica de tu evento al siguiente nivel.
       </p>
 
       <div
@@ -160,7 +174,7 @@
           href="/contacto"
           class="inline-flex justify-center items-center px-8 py-3.5 border border-gray-300 text-base font-bold rounded-lg text-white hover:bg-white hover:text-gray-900 md:text-lg transition-colors backdrop-blur-sm bg-white/10"
         >
-          Cotizar Rápido
+          Cotizar Producción
         </a>
       </div>
     </div>
