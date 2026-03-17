@@ -67,6 +67,15 @@ const localBusinessSchema = {
 
     <!-- Slot Head for Custom Injections (e.g. schema per page) -->
     <slot name="head" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2H2NSXCDT" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-R2H2NSXCDT');
+    </script>
   </head>
   <body
     class="min-h-screen flex flex-col bg-gray-50 text-gray-900 font-sans mt-16 antialiased"
